@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+   <Resource
+      auth="Container"
+      driverClassName="com.mysql.jdbc.Driver"
+      url="jdbc:mysql://localhost:3306/careconnect?autoReconnect=true"
+      username="root"
+      password="gustjr9931"
+      name="jdbc/mysql"
+      type="javax.sql.DataSource"
+      maxActive="100"
+      maxIdle="30"
+      maxWait="10000" />
+</Context>

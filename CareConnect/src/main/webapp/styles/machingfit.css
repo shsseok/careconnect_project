@@ -1,0 +1,37 @@
+.fit-Container
+{
+text-align: center;
+
+background-color: rgba(24, 208, 8, 0.5);
+border-radius: 0px 0px 70px 70px / 0px 0px 70px 70px;
+}
+.text-box
+{
+margin: 10px;
+}
+.text-box div
+{
+margin: 10px;
+}
+.choice-box
+{
+margin:20px;
+text-align: center;	
+	
+}
+.choice-img img
+{
+	
+	margin:10px;
+}
+.choice-service1 img
+{
+	margin:10px;
+}
+span
+{
+	font-family: fantasy; 
+}
+
+
+

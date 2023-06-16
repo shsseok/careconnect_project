@@ -1,0 +1,38 @@
+  table {
+        width: 800px;
+        border-collapse: collapse;
+    }
+
+    th {
+        background-color: #f2f2f2;
+        color: black;
+        text-align: center;
+        padding: 15px;
+    }
+
+    td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center;
+    }
+    .writePostButton {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        margin:10px 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        cursor: pointer;
+        float: right;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+    }
+    .writePostButton:hover {
+        background-color: #45a049;
+    }
+    .searchBox
+    {
+    padding: 10px 20px;
+     margin:10px 10px;
+    }

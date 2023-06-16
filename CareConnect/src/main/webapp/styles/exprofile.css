@@ -1,0 +1,51 @@
+@charset "UTF-8";
+ body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .profile {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .profile textarea {
+            width: 100%;
+            height: 100px;
+            resize: none;
+        }
+        .profile input[type="text"] {
+            width: 100%;
+            height: 30px;
+        }
+       
+        .reviews {
+            height: 200px;
+            overflow-y: scroll;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .reviews p {
+            margin-bottom: 10px;
+        }
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            background: #007bff;
+            color: #fff;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .btn-block {
+            width: 100%;
+            text-align: center;
+        }

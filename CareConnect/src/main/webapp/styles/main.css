@@ -1,0 +1,18 @@
+.mainbody1
+{
+    background-color: #18D008;
+}
+.mainbody1 p
+{
+    margin: 20px 30px;
+}
+.mainbody2
+{
+
+overflow-x: auto;
+white-space: nowrap;
+}
+.mainbody3Text span
+{
+	margin:30px;
+}

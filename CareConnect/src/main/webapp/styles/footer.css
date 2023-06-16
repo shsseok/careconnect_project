@@ -1,0 +1,29 @@
+
+#footer_container {
+    
+   
+    width: 100%;
+    background:#808080;
+    height:80px;
+    bottom:0;
+    
+}
+.inner_container div
+{
+display: inline-block;
+}
+.policy a
+{
+text-decoration:none;
+}
+.policy
+{
+position:absolute;
+right:0;
+
+}
+.right
+{
+position:absolute;
+left:0;
+}
