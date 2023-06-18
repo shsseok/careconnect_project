@@ -16,7 +16,8 @@ function selectItem(category, item, element) {
         }
 
         
-        element.style.border = "5px solid yellow";
+        element.style.border = "1px solid black";
+        element.style.borderRadius = "50%";
 
         
         selectedPartElement = element;
@@ -27,8 +28,8 @@ function selectItem(category, item, element) {
             selectedService1Element.style.border = "";
         }
 
-        element.style.border = "5px solid yellow";
-
+        element.style.border = "1px solid black";
+		element.style.borderRadius = "60px";
         selectedService1Element = element;
     } else if(category === "servicetwo") {
         selectedService2 = item;
@@ -37,8 +38,8 @@ function selectItem(category, item, element) {
             selectedService2Element.style.border = "";
         }
 
-        element.style.border = "5px solid yellow";
-
+        element.style.border = "1px solid black";
+		element.style.borderRadius = "60px";
         selectedService2Element = element;
 }
 }

@@ -16,7 +16,7 @@
 <jsp:useBean id="exddb" class="Carepakage.expertProfileDBCP"/>
 <jsp:useBean id="userMaching" class="Carepakage.userMachingchoice" scope="session"/>
 <%@ page import="java.util.ArrayList, Carepakage.user2Entity" %>
-<%@ page import="java.util.ArrayList, Carepakage.expertProfile" %>
+<%@ page import="Carepakage.expertProfile" %>
 <%@include file = "header.jsp" %>
 
  <div class="container">
@@ -122,14 +122,18 @@
             	
                
                
-               														
-             													
+               		%>	
+               		<div style="height: 1000px; overflow-y: scroll;" class="custom-scroll">										
+             		<% 											
             		for(expertProfile exlist : list ) {
             
                
                %>
-            <div class="card mb-3">
+          
+            <div class="card mb-3 shadow rounded" >
+            
                 <div class="row no-gutters">
+                
                     <div class="col-md-4">
                         <span style="color:red"><%=exlist.getName()%> 전문가 이미지 </span>
                     </div>
@@ -147,7 +151,9 @@
                     </div>
                 </div>
             </div>
+             
               <%} %>
+              </div>
         </div>
       
     </div>

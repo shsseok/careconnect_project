@@ -93,7 +93,7 @@ public class communityDBCP {
 	{
 		connect();
 		boolean success = false; 
-		String SQL = "insert into community values(?,?,?,?,?,?,?,?)";
+		String SQL = "insert into community values(?,?,?,?,?,?,?,?,?)";
 	    
 	    try {
 	    	pstmt = con.prepareStatement(SQL);
@@ -105,6 +105,7 @@ public class communityDBCP {
 	        pstmt.setString(6,getDate());
 	        pstmt.setString(7,board.getEmail());
 	        pstmt.setString(8,board.getExpertport());
+	        pstmt.setString(9,board.getClienttype());
 	        
 	        
 	       
@@ -181,6 +182,36 @@ public class communityDBCP {
 	    }
 	    return board; 
 	}
+	public ArrayList<communityEntity> getBoardentireList() {
+	    connect();
+	    String SQL = "select * from community";
+	    ArrayList<communityEntity> board = new ArrayList<communityEntity>();
+	    
+	    try {
+	        pstmt = con.prepareStatement(SQL);
+	        ResultSet rs = pstmt.executeQuery();
+	        
+	        while(rs.next()) {  // rs에 데이터가 있을 때만, 값을 가져와서 expertProfile 객체를 생성합니다.
+	            communityEntity brd=new communityEntity();
+	            brd.setBoardId(rs.getInt("boardid"));
+	            brd.setUserName(rs.getString("username"));
+	            brd.setBoardTitle(rs.getString("boardtitle"));
+	            brd.setBoardContent(rs.getString("boardcontent"));
+	            brd.setBoardAvailable(rs.getInt("boardavailable"));
+	            brd.setBoardDate(rs.getString("boarddate"));
+	            brd.setClienttype(rs.getString("clienttype"));
+	           
+	            board.add(brd);
+	        }
+	        rs.close();            
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } 
+	    finally {
+	        disconnect();
+	    }
+	    return board; 
+	}
 	public boolean nextPage(int page)
 	{
 		   connect();
@@ -225,6 +256,7 @@ public class communityDBCP {
 	            brd.setBoardDate(rs.getString("boarddate"));
 	            brd.setExpertport(rs.getString("expertport"));
 	            brd.setEmail(rs.getString("email"));
+	            brd.setClienttype(rs.getString("clienttype"));
 	            return brd;
 	            
 	        }

@@ -20,6 +20,14 @@ String expertport = request.getParameter("expertport");
 
 
 try {
+    if(email.equals("admin") && password.equals("1234"))
+    {
+    	session.setAttribute("email", email);
+    	response.sendRedirect("../Admin.jsp");
+    }
+    else{
+    	
+    
     if ("normal".equals(userType)) {
         if(userDbcp.isPasswd(email,password,expertport,userType))
         {
@@ -71,7 +79,7 @@ try {
         	
    		
        <% 
-    }}
+    }}}
 } catch(Exception e) {
     e.printStackTrace();
 }

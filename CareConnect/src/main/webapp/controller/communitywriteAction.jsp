@@ -13,9 +13,13 @@
 request.setCharacterEncoding("UTF-8");
 String email=(String)session.getAttribute("email");
 String expertport=(String)session.getAttribute("expertport");
-if(email!=null &&  expertport==null)//일반 사용자가 로그인 상태라면
+String userType=(String)session.getAttribute("userType");
+System.out.println(userType);
+if(email!=null &&  expertport==null && userType.equals("normal"))//일반 사용자가 로그인 상태라면
 {
+	community.setClienttype(userType);
 	community.setEmail(email);
+	
 	
 %>
 <jsp:setProperty name="community" property="userName" param="username"/>
@@ -26,10 +30,12 @@ if(email!=null &&  expertport==null)//일반 사용자가 로그인 상태라면
 communitydb.boardWrite(community);//글 쓰기 db
 response.sendRedirect("../Community.jsp");
 }
-else if(email!=null &&  expertport!=null)//전문가 라면
+else if(email!=null &&  expertport!=null && userType.equals("expert"))//전문가 라면
 {
+	community.setClienttype(userType);
 	community.setEmail(email);
 	community.setExpertport(expertport);
+	
 %>
 	
 	<jsp:setProperty name="community" property="userName" param="username"/>

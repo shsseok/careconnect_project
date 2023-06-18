@@ -244,6 +244,7 @@ public class userDBCP {
 		}
 		return user1;
 	}
+	
 	public user2Entity getUser2(String email) {	
 		connect();
 		String SQL = "select * from user2 where email = ?";
@@ -274,8 +275,91 @@ public class userDBCP {
 		}
 		return user2;
 	}
-	
-	
+	public ArrayList<user1Entity> getUser1List() {	
+		connect();
+		ArrayList<user1Entity> list = new ArrayList<user1Entity>();
+		
+		String SQL = "select * from user1";
+		try {
+			pstmt = con.prepareStatement(SQL);
+			ResultSet rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				user1Entity user1 = new user1Entity();
+				
+				user1.setId ( rs.getInt("id") );
+				user1.setName ( rs.getString("name") );
+				user1.setEmail( rs.getString("email") );
+				user1.setSex ( rs.getString("sex") );
+				user1.setPhone ( rs.getString("phone") );
+				user1.setPassword ( rs.getString("password") );
+				user1.setSickpart(rs.getString("sickpart"));
+				user1.setWho(rs.getString("who"));
+				//리스트에 추가
+				list.add(user1);
+			}
+			rs.close();			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		finally {
+			disconnect();
+		}
+		return list;
+	}
+	public ArrayList<user2Entity> getUser2List() {	
+		connect();
+		ArrayList<user2Entity> list = new ArrayList<user2Entity>();
+		
+		String SQL = "select * from user2";
+		try {
+			pstmt = con.prepareStatement(SQL);
+			ResultSet rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				user2Entity user2 = new user2Entity();
+				
+				user2.setId ( rs.getInt("id") );
+				user2.setName ( rs.getString("name") );
+				user2.setEmail( rs.getString("email") );
+				user2.setSex ( rs.getString("sex") );
+				user2.setPhone ( rs.getString("phone") );
+				user2.setCareer ( rs.getInt("career") );	
+				user2.setPassword ( rs.getString("password") );	
+				user2.setStrengthpart ( rs.getString("strengthpart") );
+				user2.setPlace ( rs.getString("place") );
+				user2.setExpertport ( rs.getString("expertport") );					
+				//리스트에 추가
+				list.add(user2);
+			}
+			rs.close();			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		finally {
+			disconnect();
+		}
+		return list;
+	}
+	public boolean deleteUser2DB(String email) {
+		boolean success = false; 
+		connect();		
+		String sql ="delete from user2 where email=?";
+		try {
+			pstmt = con.prepareStatement(sql);
+			// 인자로 받은 주 키인 id 값을 이용해 삭제
+			pstmt.setString(1, email);
+			pstmt.executeUpdate();
+			success = true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return success;
+		}
+		finally {
+			disconnect();
+		}
+		return success;
+	}
 	
 	
 	public int getUserCount() {	 //일반 환자 사용자의 수

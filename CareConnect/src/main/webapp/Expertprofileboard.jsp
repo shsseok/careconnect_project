@@ -4,13 +4,27 @@
 <html>
 <head>
 <meta charset="UTf-8">
-<link rel="stylesheet" href="styles/exprofile.css">
+<style>
+    .reviews-container {
+    background-color: rgba(24, 208, 8, 0.5);
+    border: 1px solid black;
+    border-radius: 10px;
+    overflow-x: auto;  
+    max-width: 100%;  
+    white-space: nowrap;  
+	}
+  
+</style>
+<link rel="stylesheet" href="styles/exprofileboard.css">
 <title>전문가 프로필 페이지 입니다.</title>
 </head>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+ <script language=JavaScript src="jsfile/expertprofileboard.js" charset="UTF-8"></script>
 <body>
 
 <%@include file = "header.jsp" %>
-<%@ page import="Carepakage.*" %>
+<%@ page import="java.util.ArrayList,Carepakage.*" %>
 	<%
 		String email = request.getParameter("email");
 		expertProfileDBCP expertdb=new expertProfileDBCP(); //전문가의프로필 dbcp
@@ -108,21 +122,81 @@
                 <input type="text" id="onlineservice" name="onlineservice" value="<%=onlineservice%>" readonly>
             	<label for="phone">전문가 번호</label>
                 <input type="text" id="phone" name="phone" value="<%=phone%>" readonly>
+                
             </div>
+            <%
+             reviewDBCP reviewdb = new reviewDBCP();
+      		 ArrayList<reviewEntity> reviewlist = reviewdb.getReviewList(email);
+            %>
+  <div class="reviews-list" style="color:green; text-align:center;">리뷰 글 리스트</div>
+  <div style="text-align:center;"><strong>총 평점:</strong><span style="font-size:20px;"><%=reviewdb.getAvgRating(email).getAvgrating() %></span></div>
+  <div class="reviews-container">
+ 	
+ <%
+       
+      		
 
-            <div class="reviews">
-             리뷰 글 리스트 입니다.
-            </div>
-
-            <div class="btn-block">                    
-            	<input type="button" class="btn" value="리뷰 남기러 가기" onclick="location.href='Review.jsp'">
-         		<button type="button" class="btn" onclick="location.href='Matchingpage.jsp'">다시 매칭하러 가기</button>
-                <input type="button" class="btn" value="채팅하기">
+        for (reviewEntity review : reviewlist) {
+            String username = review.getUsername();
+            int rating = review.getRating();
+            String reviewtext = review.getReview();
+            String star="★★★★★";
             
+        	if(rating==1)
+        	{
+        	star="★";
+        	}
+        	else if(rating==2)
+        	{
+        	star="★★";
+        	}
+        	else if(rating==3)
+        	{
+        	star="★★★";
+        	}
+        	else if(rating==4)
+        	{
+        	star="★★★★";
+        	}
+        	else
+        	{
+        	star="★★★★★";
+        	}
+         	
+    %>
+        <div class="review"  
+        style="display:inline-block; background-color: white; border:1px solid black; border-radius:10px;" 
+         onmouseover="this.style.backgroundColor = 'red';"
+    	 onmouseout="this.style.backgroundColor = 'white';">
+            <p><strong>작성자:</strong><%=username%></p>
+            <p><strong>평점:</strong><%=star%></p>
+           <input type="hidden" class="modaldata" value=<%=username %>>
+           <input type="hidden" class="modaldata" value=<%=reviewtext %>>
+        </div>
+       
+   
+    <%
+        }
+    %>
+    <div class="Modal" style="display: none; background-color:rgba(24, 208, 8, 0.5); border: 5px solid black"></div>
+  
+            </div>
+
+            <div class="btn-box"> 
+            <form action="Review.jsp"> 
+            	<input type="hidden" name="expertemail" value="<%=email%>">                 
+            	<input type="submit" class="btn" value="리뷰 남기러 가기" >
+            	<button type="button" class="btn" onclick="location.href='Matchingpage.jsp'">다시 매칭하러 가기</button>
+                <input type="button" class="btn" value="채팅하기">
+         	</form> 	
+         		
+            	
             
             </div>
       
     </div>
 <%@include file = "footer.jsp" %>
+
 </body>
+
 </html>

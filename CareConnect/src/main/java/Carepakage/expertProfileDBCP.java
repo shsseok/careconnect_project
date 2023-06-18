@@ -47,6 +47,7 @@ public class expertProfileDBCP {
 			}
 		}
 	}
+	
 	public expertProfile getExpertprofile(String email) { //전문가의 프로필을 찾기 위해서도 쓰이지만 전문가가 처음 가입했을 때 프로필이 생성되지 않았다면 전문가는 
 	    connect();										  //매칭 시스템을 사용할 수 없게 된다. 이를 방지 하기 위해서 해당전문가가 회원가입 후 바로 프로필 생성을 할 수 있도록 
 	    												  //loginaction.jsp에서 로그인을 했을 때 프로필을 생성하도록 지원한다. 

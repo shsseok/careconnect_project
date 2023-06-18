@@ -4,111 +4,47 @@
 <head>
     <meta charset="UTF-8">
     <title>리뷰 작성 페이지 입니다.</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-
-        
-
-        .container {
-            max-width: 1200px; /* Increase form width */
-            margin: 0 auto;
-        }
-
-        form {
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
-        }
-
-        form div {
-            margin-bottom: 10px;
-        }
-
-        form div label {
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        form div input, form div textarea {
-            width: 100%;
-            padding: 10px;
-            border-radius: 5px;
-            border: 1px solid #ddd;
-        }
-
-        form div button {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            background-color: #007BFF;
-            color: #ffffff;
-            cursor: pointer;
-        }
-
-        form div button:hover {
-            background-color: #0056b3;
-        }
-        
-        /* CSS for star rating */
-        .star-rating {
-            display: inline-block;
-        }
-
-        .star-rating input {
-            display: none;
-        }
-
-        .star-rating label {
-            color: lightgray;
-            float: right;
-            font-size: 30px;
-        }
-
-        .star-rating input:checked ~ label {
-            color: gold;
-        }
-
-        .star-rating label:hover,
-        .star-rating label:hover ~ label {
-            color: gold;
-        }
-    </style>
+ <link rel="stylesheet" href="styles/review.css">
 </head>
 <body>
+<%@ page import="Carepakage.*" %>
+<%
+String expert_email=request.getParameter("expertemail");
+String email=(String) session.getAttribute("email");
+
+userDBCP user=new userDBCP();
+String username=user.getUser1(email).getName();
+%>
 <%@include file = "header.jsp" %>
     <div class="container">
         <h1>리뷰를 작성하세요</h1><br>
         <div></div>
-        <form action="submit_review.jsp" method="POST">
+        <form action="controller/reviewAction.jsp" method="POST">
+            <input type="hidden" name="expertemail" value="<%=expert_email%>">
             <div>
                 <label for="username">작성자</label>
-                <input type="text" id="username" name="username" required>
+                <input type="text" id="username" name="username" value="<%= username %>"required readonly>
             </div>
             <div>
                 <label for="review">이용후기</label>
-                <textarea id="review" name="review" rows="5" required></textarea>
+                <textarea id="review" name="review" rows="5" maxlength="100" required></textarea>
             </div>
             <div class="star-rating">
-                <label for="star5">☆</label>
-                <input id="star5" name="rating" type="radio" value="5">
-                <label for="star4">☆</label>
-                <input id="star4" name="rating" type="radio" value="4">
-                <label for="star3">☆</label>
-                <input id="star3" name="rating" type="radio" value="3">
-                <label for="star2">☆</label>
-                <input id="star2" name="rating" type="radio" value="2">
-                <label for="star1">☆</label>
-                <input id="star1" name="rating" type="radio" value="1">
+                <input type="hidden" id="rating" name="rating" value="0">
+                <span class="star" data-value="5">&#9733;</span>
+                <span class="star" data-value="4">&#9733;</span>
+                <span class="star" data-value="3">&#9733;</span>
+                <span class="star" data-value="2">&#9733;</span>
+                <span class="star" data-value="1">&#9733;</span>
             </div>
             <div>
-                <button  onClick="location.href='main.jsp'">제출</button>
+            	<button type="button" onClick="location.href='Expertprofileboard.jsp?email=<%=expert_email%>'">프로필 보러 가기</button>
+                <button type="submit">등록</button>
             </div>
         </form>
     </div>
 
-
+    <script language=JavaScript src="jsfile/review.js" charset="UTF-8"></script>
 </body>
+
 </html>

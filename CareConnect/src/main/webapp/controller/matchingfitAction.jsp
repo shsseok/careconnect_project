@@ -8,13 +8,11 @@
 </head>
 <body>
 <jsp:useBean id="userDbcp" class="Carepakage.userDBCP"/>
-<jsp:useBean id="user2" class="Carepakage.user2Entity"/>
 <jsp:useBean id="userMaching" class="Carepakage.userMachingchoice" scope="session"/>
-<jsp:useBean id="user1" class="Carepakage.user1Entity"/>
+
 
 <%  
-String userEmail=(String) session.getAttribute("email");
-String userSickpart=(String) session.getAttribute("sickpart");
+
 
 String userSelectpart=request.getParameter("selectedPart");
 String userSelectService1=request.getParameter("selectedService1");

@@ -9,6 +9,13 @@ public class communityEntity {
 	private int boardAvailable; // 삭제 유무
 	private String email; //구분하기 위해
 	private String expertport; // 구분하기 위해서
+	private String clienttype;
+	public String getClienttype() {
+		return clienttype;
+	}
+	public void setClienttype(String clienttype) {
+		this.clienttype = clienttype;
+	}
 	public String getExpertport() {
 		return expertport;
 	}

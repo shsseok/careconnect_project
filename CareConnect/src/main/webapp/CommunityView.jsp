@@ -19,11 +19,7 @@ String email = (String)session.getAttribute("email");
 String expertport = (String)session.getAttribute("expertport");
 String userType=(String)session.getAttribute("userType");
  
-userDBCP user=new userDBCP();
-user1Entity user1=new user1Entity();
-user2Entity user2=new user2Entity();
-user1=user.getUser1(email);
-user2=user.getUser2(email);
+
 int boardid=0;
 if(request.getParameter("boardId")!=null)
 {
@@ -32,7 +28,7 @@ if(request.getParameter("boardId")!=null)
 communityDBCP communitydb=new communityDBCP();
 communityEntity community= new communityEntity(); 
 community=communitydb.getBoard(boardid);
-String expertport1 = community.getExpertport(); 
+
 
  
 
@@ -67,14 +63,14 @@ String expertport1 = community.getExpertport();
         	<%
         	
         	
-        	if(email!=null && (expertport==null || expertport1==null) && user.getUser1(email).getEmail().equals(email) && community.getEmail().equals(email) && userType.equals("normal") ) {  //일반 사용자 확인
+        	if(email!=null && community.getClienttype().equals("normal") && email.equals(community.getEmail()) && expertport==null) {  //일반 사용자 확인
         	%>
         	<td style="float:right;"><input type="button" value="삭제" onClick="deletecheck()"></td>        	
         	<td style="float:right;"><input type="button" value="수정" onClick="updatecheck()"></td>	
         	<%         		
         	}	
 
-        	if(email!=null && expertport!=null && expertport1!=null && expertport.equals(expertport1) && user.getUser2(email).getEmail().equals(email) && community.getEmail().equals(email) && userType.equals("expert")) { // 전문가 확인
+        	if(email!=null && community.getClienttype().equals("expert") && email.equals(community.getEmail()) && expertport!=null) { // 전문가 확인
         	%>	
         	<td style="float:right;"><input type="button" value="삭제" onClick="deletecheck()"></td>        	
         	<td style="float:right;"><input type="button" value="수정" onClick="updatecheck()"></td>	

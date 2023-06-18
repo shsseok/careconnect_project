@@ -1,18 +1,50 @@
 .mainbody1
 {
     background-color: #18D008;
+   
+  
+    
 }
-.mainbody1 p
+.mainbody1 p,h1,span
 {
-    margin: 20px 30px;
+   
+    padding: 10px;
+    color: white;
+    font-size: 15px;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.5;
+    text-align: justify;
 }
-.mainbody2
-{
+.mainbody1 div
+{ 
+	display:inline-block;
+}
+.mainbody2 {
+    overflow: auto;
+    white-space: nowrap;
+    scrollbar-width: none;  /* For Firefox */
+    -ms-overflow-style: none;  /* For Internet Explorer and Edge */
+}
 
-overflow-x: auto;
-white-space: nowrap;
+.mainbody2::-webkit-scrollbar { 
+    display: none;  /* For Chrome, Safari, and Opera */
 }
 .mainbody3Text span
 {
-	margin:30px;
+    margin:30px;
+    font-size: 20px;
+    color: #333;
+    font-family: 'Roboto', sans-serif;
+}
+.reviewtext
+{
+text-align:center;
+ font-size: 30px;
+ color:red;
+}
+.bestreview
+{
+	border:1px solid black;
+	border-radius:10px;
+	text-align:center;
 }

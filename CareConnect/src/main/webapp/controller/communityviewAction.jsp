@@ -18,11 +18,12 @@ String boardid=request.getParameter("boardId");
 int boardid1=0;
 if(boardid != null) {
 	boardid1=Integer.parseInt(boardid);
-    community.setBoardId(boardid1);
+    
 }
 
 if(menuAction.equals("update"))
 {
+	community.setBoardId(boardid1);
 %>
 
 

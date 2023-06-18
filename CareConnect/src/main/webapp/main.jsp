@@ -3,68 +3,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-.mainbody1
-{
-    background-color: #18D008;
-   
-  
-    
-}
-.mainbody1 p,h1,span
-{
-   
-    padding: 10px;
-    color: white;
-    font-size: 15px;
-    font-family: 'Roboto', sans-serif;
-    line-height: 1.5;
-    text-align: justify;
-}
-.mainbody1 div
-{ 
-	display:inline-block;
-}
-.mainbody2 {
-    overflow: auto;
-    white-space: nowrap;
-    scrollbar-width: none;  /* For Firefox */
-    -ms-overflow-style: none;  /* For Internet Explorer and Edge */
-}
-
-.mainbody2::-webkit-scrollbar { 
-    display: none;  /* For Chrome, Safari, and Opera */
-}
-.mainbody3Text span
-{
-    margin:30px;
-    font-size: 20px;
-    color: #333;
-    font-family: 'Roboto', sans-serif;
-}
-.reviewtext
-{
-text-align:center;
- font-size: 30px;
- color:red;
-}
-.bestreview
-{
-	border:1px solid black;
-	border-radius:10px;
-	text-align:center;
-}
-
-</style>
+<link rel="stylesheet" href="styles/main.css">
 <meta charset="UTF-8">
 <title>메인 페이지 입니다.</title>
 </head>
 <body>
 
 <%@include file = "header.jsp" %>
-<%@ page import="Carepakage.*" %>
+<%@ page import="java.util.ArrayList,Carepakage.*" %>
 <%
 userDBCP user=new userDBCP();
+
 %>
 <div class="mainbody1">
 <div class="textbox">
@@ -82,13 +31,49 @@ userDBCP user=new userDBCP();
 </div>
 
 </div>	
-<div class="reviewtext">이용 후기</div>
+<div class="reviewtext">베스트 이용 후기</div>
 <div class=mainbody2 >
-<% for(int i=0;i<30;i++)
+<% 
+     reviewDBCP reviewdb = new reviewDBCP();
+	 ArrayList<reviewEntity> reviewlist = reviewdb.getBestReviewList();//베스트 이용후기
+for(reviewEntity review:reviewlist)
 {
+	 	  String expertname=review.getExpertname();
+          String username = review.getUsername();
+          int rating = review.getRating();
+          String reviewtext = review.getReview();
+          String star="★";
+          
+      	if(rating==1)
+      	{
+      	star="★";
+      	}
+      	else if(rating==2)
+      	{
+      	star="★★";
+      	}
+      	else if(rating==3)
+      	{
+      	star="★★★";
+      	}
+      	else if(rating==4)
+      	{
+      	star="★★★★";
+      	}
+      	else
+      	{
+      	star="★★★★★";
+      	}
 	%>
-<div class=bestreview style="display:inline-block; width:200px; height:100px; border:1px solid black;">베스트 이용 후기</div>
-<% }%>
+<div class=bestreview style="display:inline-block; width:200px; height:100px; border:1px solid black;">
+  			<p><strong>전문가 이름:</strong><%=expertname%></p>
+  			<p><strong>작성자:</strong><%=username%></p>
+            <p><strong>평점:</strong><%=star%></p>
+            <p><strong>이용 후기:</strong> <%=reviewtext%></p>
+</div>
+<% 
+
+}%>
 
 </div>
 <div class=mainbody3 style="text-align:center">
@@ -106,5 +91,5 @@ userDBCP user=new userDBCP();
 <%@include file = "MatchingButton.jsp" %>
 <%@include file = "footer.jsp" %>
 </body>
- 
+
 </html>
