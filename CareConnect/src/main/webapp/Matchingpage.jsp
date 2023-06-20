@@ -93,7 +93,7 @@
                   //매칭 핏페이지에서 건너옴 기본적으로 필터링해서 사용자에게 보여주기 위함
                String sickpart=userMaching.getSickpart();//사용자가 원하는 부위
                String service1=userMaching.getService1();//사용자가 원하는 서비스 유형
-               String service2=userMaching.getService2();//동행 서비스 유무 (현재 동생서비스는 기능에 아직 넣어놓지 않았습니다.)
+               String service2=userMaching.getService2();//동행 서비스 유무 
                String career=request.getParameter("career");
                String onlineservice=request.getParameter("onlineservice");
                String servicecategory=request.getParameter("servicecategory");

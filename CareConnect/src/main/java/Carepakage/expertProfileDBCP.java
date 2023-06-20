@@ -90,7 +90,8 @@ public class expertProfileDBCP {
 	public boolean updateprofileDB(expertProfile profile,String email) {
 		boolean success = false; 
 		connect();		
-		String sql ="update expertprofile set name=?, sex=?, phone=?,strengthpart=?, career=?, place=? ,introduction=?, serviceskill=?, onlineservice=?, experience=?,servicecategory=? where email=?";	
+		String sql ="update expertprofile set name=?, sex=?, phone=?,strengthpart=?, career=?, place=? ,introduction=?, serviceskill=?, "
+				+ "onlineservice=?, experience=?,servicecategory=? where email=?";	
 		try {
 			pstmt = con.prepareStatement(sql);
 			// 인자로 받은 GuestBook 객체를 이용해 사용자가 수정한 값을 가져와 SQL문 완성
@@ -157,9 +158,6 @@ public class expertProfileDBCP {
 			pstmt.setString(11, profile.getName());
 			pstmt.setString(12, profile.getSex());
 			pstmt.setString(13, profile.getPhone());
-			
-			
-			
 			pstmt.executeUpdate();
 			success = true; 
 		} catch (SQLException e) {

@@ -78,24 +78,16 @@ public class reviewDBCP {
 		ArrayList<reviewEntity> list = new ArrayList<reviewEntity>();
 	
 		String SQL = "select * from review where expert_email=?";
-		
-
-		try {
-			
-			
+		try {	
 			pstmt = con.prepareStatement(SQL);
 			pstmt.setString(1, expertemail);
 			ResultSet rs = pstmt.executeQuery();
-			
-			
-
 			while (rs.next()) {
 				reviewEntity review = new reviewEntity();
 				
 				review.setUsername(rs.getString("username"));
 				review.setReview(rs.getString("review"));
-				review.setRating(rs.getInt("rating"));
-				
+				review.setRating(rs.getInt("rating"));	
 
 				list.add(review);
 			}
@@ -208,6 +200,25 @@ public class reviewDBCP {
 			disconnect();
 		}
 		return list;
+	}
+	public boolean deleteReviewDB(int reviewid) {
+		boolean success = false; 
+		connect();		
+		String sql ="delete from review where reviewid=?";
+		try {
+			pstmt = con.prepareStatement(sql);
+			// 인자로 받은 주 키인 id 값을 이용해 삭제
+			pstmt.setInt(1, reviewid);
+			pstmt.executeUpdate();
+			success = true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return success;
+		}
+		finally {
+			disconnect();
+		}
+		return success;
 	}
 
 }

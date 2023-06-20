@@ -11,22 +11,32 @@
 <%
 String expertemail=request.getParameter("email");
 String boardid=request.getParameter("boardId");
+String reviewid=request.getParameter("reviewId");
 
-
-if(boardid==null && expertemail!=null)
+if(boardid==null && reviewid==null && expertemail!=null)
 {
-	userDBCP user = new userDBCP();
-	user.deleteUser2DB(expertemail);
+	userDBCP userdb = new userDBCP();
+	userdb.deleteUser2DB(expertemail);
 	out.println("<script>");
 	out.println("alert('삭제 되었습니다.');");
 	out.println("location.href='../Admin.jsp'");
 	out.println("</script>");
 }
-if(expertemail==null && boardid!=null)
+if(expertemail==null && reviewid==null && boardid!=null)
 {
 	int boardid1=Integer.parseInt(boardid);
-	communityDBCP community = new communityDBCP();
-	community.deleteboardDB(boardid1);
+	communityDBCP communitydb = new communityDBCP();
+	communitydb.deleteboardDB(boardid1);
+	out.println("<script>");
+	out.println("alert('삭제 되었습니다.');");
+	out.println("location.href='../Admin.jsp'");
+	out.println("</script>");
+}
+if(expertemail==null && boardid==null && reviewid!=null )
+{
+	int reviewid1=Integer.parseInt(reviewid);
+	reviewDBCP reviewdb = new reviewDBCP();
+	reviewdb.deleteReviewDB(reviewid1);
 	out.println("<script>");
 	out.println("alert('삭제 되었습니다.');");
 	out.println("location.href='../Admin.jsp'");

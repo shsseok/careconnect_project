@@ -57,7 +57,8 @@ community=communitydb.getBoard(boardid);
         </tr>
         <tr>
             <td><label for="boardcontent">내용</label></td>
-            <td><textarea id="boardcontent" name="boardcontent" rows="15" cols="50"  max=2028 value="<%=community.getBoardContent() %>" required><%=community.getBoardContent() %></textarea></td>
+            <td><textarea id="boardcontent" name="boardcontent" rows="15" cols="50"  max=2028 value="<%=community.getBoardContent() %>" required>
+            <%=community.getBoardContent() %></textarea></td>
         </tr>
         <tr>
         	<%

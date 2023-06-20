@@ -55,7 +55,8 @@ for(int i=0;i<list.size();i++)
 	<td><%=list.get(i).getBoardId() %></td>
 	<td><%=list.get(i).getUserName() %></td>
 	<td onmouseover="this.style.backgroundColor='SkyBlue'"
-	onmouseout="this.style.backgroundColor='white'"><a href="CommunityView.jsp?boardId=<%=list.get(i).getBoardId()%>"><%=list.get(i).getBoardTitle()%></a></td>
+	onmouseout="this.style.backgroundColor='white'">
+	<a href="CommunityView.jsp?boardId=<%=list.get(i).getBoardId()%>"><%=list.get(i).getBoardTitle()%></a></td>
 	<td><%=list.get(i).getBoardDate() %></td>
 </tr>
 <%
@@ -83,13 +84,15 @@ for(int i=0;i<list.size();i++)
 if(pageNumber!=1)
 {
 %>
-<div style="border:1px solid black; display:inline-block; margin:10px; padding:20;"><a href="Community.jsp?pageNumber=<%=pageNumber -1%>" class=btn >이전 페이지</a></div>
+<div style="border:1px solid black; display:inline-block; margin:10px; padding:20;">
+<a href="Community.jsp?pageNumber=<%=pageNumber -1%>" class=btn >이전 페이지</a></div>
 
 <%
 }if(communitydb.nextPage(pageNumber+1))
 {
 %>
-<div style="border:1px solid black; display:inline-block; margin:10px; padding:20;"><a href="Community.jsp?pageNumber=<%=pageNumber +1 %>" class=btn >다음 페이지</a></div>
+<div style="border:1px solid black; display:inline-block; margin:10px; padding:20;">
+<a href="Community.jsp?pageNumber=<%=pageNumber +1 %>" class=btn >다음 페이지</a></div>
 <% 
 }
 %>

@@ -33,7 +33,8 @@
         <tr>
         	
         		<td></td>	
-    			<td style="float:right;"><input type="submit"  style="margin:10px" value="글작성"><input type="button" value="목록보기" onClick="location.href='Community.jsp'"></td>
+    			<td style="float:right;"><input type="submit"  style="margin:10px" value="글작성"><input type="button" value="목록보기" 
+    			onClick="location.href='Community.jsp'"></td>
     		
     	</tr>
     </table>

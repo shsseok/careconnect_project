@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>리뷰 관리자 페이지 입니다.</title>
+<title>관리자가 리뷰 관리하는 페이지 입니다.</title>
 </head>
 <body>
 <%@ page import="java.util.ArrayList,Carepakage.*"%>

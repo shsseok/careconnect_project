@@ -129,7 +129,8 @@
       		 ArrayList<reviewEntity> reviewlist = reviewdb.getReviewList(email);
             %>
   <div class="reviews-list" style="color:green; text-align:center;">리뷰 글 리스트</div>
-  <div style="text-align:center;"><strong>총 평점:</strong><span style="font-size:20px;"><%=reviewdb.getAvgRating(email).getAvgrating() %></span></div>
+  <div style="text-align:center;">
+  <strong>총 평점:</strong><span style="font-size:20px;"><%=reviewdb.getAvgRating(email).getAvgrating() %></span></div>
   <div class="reviews-container">
  	
  <%

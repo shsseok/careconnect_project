@@ -223,7 +223,7 @@ public class communityDBCP {
 		        pstmt.setInt(1,getIdNext()-(page-1)*10); 
 		        ResultSet rs = pstmt.executeQuery();
 		        
-		        if(rs.next()) {  // rs에 데이터가 있을 때만, 값을 가져와서 expertProfile 객체를 생성합니다.
+		        if(rs.next()) { 
 		          return true; 
 		        }
 		        rs.close();            
